@@ -183,6 +183,7 @@ html,
 body {
   font-family: Arial, Microsoft JhengHei, Microsoft YaHei, Helvetica, sans-serif;
   font-size: 14px;
+  font-size: 62.5% /*1rem=10px*/;
   height: 100vh;
   margin: 0;
   position: relative;
