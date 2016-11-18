@@ -38,39 +38,6 @@
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
   <![endif]-->
 
-    <style type="text/css">
-.size1 {
-  height: 200px;
-  width: 200px;
-}
-
-.size2 {
-  width: 200px;
-  height: 400px;
-}
-
-.size3 {
-  width: 400px;
-  height: 200px;
-}
-
-.size4 {
-  height: 400px;
-  width: 394px;
-}
-
-      .layout {
-        position: absolute;
-        right: 0px;
-        left: 0px;
-        top: 124px;
-        bottom: 0px;
-        padding: 15px;
-        overflow-x: auto;
-        overflow-y: hidden;
-      }
-    </style>
-
   </head>
   <body>
   <!-- loading -->
@@ -115,27 +82,31 @@
         </div>
       </div>
       <!-- 瀑布流 -->
-<div id="freewall" class="free-wall grid">
-        <div class="brick size1"></div>
-        <div class="brick size2"></div>
-        <div class="brick size3"></div>
-        <div class="brick size2"></div>
-        <div class="brick size1"></div>
-        <div class="brick size4"></div>
-        <div class="brick size2"></div>
-        <div class="brick size2"></div>
-        <div class="brick size1"></div>
-        <div class="brick size2"></div>
-        <div class="brick size2"></div>
-        <div class="brick size4"></div>
-        <div class="brick size1"></div>
-        <div class="brick size1"></div>
-        <div class="brick size3"></div>
-        <div class="brick size2"></div>
-        <div class="brick size1"></div>
-        <div class="brick size3"></div>
-        <div class="brick size1"></div>
-        <div class="brick size1"></div>
+      <div class="freewall">
+        <div class="freewall-wrapper">
+          <div id="freewall" class="grid">
+            <div class="brick size1"></div>
+            <div class="brick size2"></div>
+            <div class="brick size3"></div>
+            <div class="brick size2"></div>
+            <div class="brick size1"></div>
+            <div class="brick size4"></div>
+            <div class="brick size2"></div>
+            <div class="brick size1"></div>
+            <div class="brick size1"></div>
+            <div class="brick size3"></div>
+            <div class="brick size2"></div>
+            <div class="brick size4"></div>
+            <div class="brick size1"></div>
+            <div class="brick size1"></div>
+            <div class="brick size3"></div>
+            <div class="brick size2"></div>
+            <div class="brick size1"></div>
+            <div class="brick size3"></div>
+            <div class="brick size1"></div>
+            <div class="brick size1"></div>
+          </div>
+        </div>
       </div>
 
 <!--       <main id="freewall" class="grid">
@@ -291,19 +262,36 @@
     // transform-style: preserve-3d;
 
        var view_x = 0;
+       var freewall_x = 0;
+       var onright = false;
       $('body').on('mousewheel', function(e) {
-        view_x = view_x + (e.deltaY*-2);
-        console.log(e.deltaY);
-        console.log(view_x);
-        if(view_x >= 0 && view_x <= 50){
-          $('.warpper').css({
-            'transform': 'translateX('+ -view_x +'%)',
-          });
-        }else if(view_x > 50){
-          view_x = 50;
-        }else if(view_x < 0){
-          view_x = 0;
+        console.log(onright);
+        if(!onright){
+          console.log('1.'+view_x);
+          view_x = view_x + (e.deltaY*-2);
+          if(view_x >= 0 && view_x <= 50){
+            $('.warpper').css({
+              'transform': 'translateX('+ -view_x +'%)',
+            });
+          }else if(view_x < 0){
+            view_x = 0;
+          }else if(view_x > 50){
+            view_x = 50;
+            onright = true;
+          }
+        }else{
+          console.log('2.'+freewall_x);
+          freewall_x = freewall_x + (e.deltaY*-2);
+          if(freewall_x >= 0){
+            $('.freewall-wrapper').css({
+              'transform': 'translateX('+ -freewall_x +'%)',
+            });
+          }else if(freewall_x < 0){
+            freewall_x = 0;
+            onright = false;
+          }
         }
+
 
       });
 
@@ -331,7 +319,7 @@
 
         // 瀑布流
 
-      $(".free-wall .brick").each(function(index, item) {
+      $(".freewall .brick").each(function(index, item) {
         item.style.backgroundImage =  "url(i/photo/" + (++index) + ".jpg)";
       });
 
@@ -344,11 +332,11 @@
           gutterY: 2,
           gutterX: 2,
           onResize: function() {
-            wall.fitHeight($(window).height() - 125);
+            wall.fitHeight($(window).height() - 140);
           }
         });
         // caculator height for IE7;
-        wall.fitHeight($(window).height() - 125);
+        wall.fitHeight($(window).height() - 140);
         $(window).trigger("resize");
       });
 
