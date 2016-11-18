@@ -27,6 +27,9 @@
   <meta property="article:tag" content="Article Tag" />
 
   <link rel="stylesheet" href="css/index.min.css">
+
+<!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+
   <!-- 讓ie8以下支援html5語意標籤 -->
   <!--[if lt IE 9]>
   <![endif]-->
@@ -34,8 +37,50 @@
   <!--[if (gte IE 6)&(lte IE 8)]>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
   <![endif]-->
+
+    <style type="text/css">
+.size1 {
+  height: 200px;
+  width: 200px;
+}
+
+.size2 {
+  width: 200px;
+  height: 400px;
+}
+
+.size3 {
+  width: 400px;
+  height: 200px;
+}
+
+.size4 {
+  height: 400px;
+  width: 394px;
+}
+
+      .layout {
+        position: absolute;
+        right: 0px;
+        left: 0px;
+        top: 124px;
+        bottom: 0px;
+        padding: 15px;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+    </style>
+
   </head>
   <body>
+  <!-- loading -->
+  <div class="loading">
+    <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+      <path fill="#000" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(80 25 25)">
+        <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform>
+        </path>
+  </svg>
+  </div>
   <div class="warpper">
     <div class="header">
       <header>
@@ -70,7 +115,30 @@
         </div>
       </div>
       <!-- 瀑布流 -->
-      <main class="grid">
+<div id="freewall" class="free-wall grid">
+        <div class="brick size1"></div>
+        <div class="brick size2"></div>
+        <div class="brick size3"></div>
+        <div class="brick size2"></div>
+        <div class="brick size1"></div>
+        <div class="brick size4"></div>
+        <div class="brick size2"></div>
+        <div class="brick size2"></div>
+        <div class="brick size1"></div>
+        <div class="brick size2"></div>
+        <div class="brick size2"></div>
+        <div class="brick size4"></div>
+        <div class="brick size1"></div>
+        <div class="brick size1"></div>
+        <div class="brick size3"></div>
+        <div class="brick size2"></div>
+        <div class="brick size1"></div>
+        <div class="brick size3"></div>
+        <div class="brick size1"></div>
+        <div class="brick size1"></div>
+      </div>
+
+<!--       <main id="freewall" class="grid">
         <div class="item" item_id="1">
           <span class="number">1</span>
           <img src="https://c3.staticflickr.com/1/361/19761217962_a3570fe583_c.jpg" />
@@ -179,13 +247,14 @@
           <span class="number">29</span>
           <img src="https://c3.staticflickr.com/1/361/19761217962_a3570fe583_c.jpg" />
         </div>
-       </main>
+       </main> -->
       <footer>
         footer
       </footer>
     </div>
 
   </div>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- 滾輪事件 -->
@@ -199,14 +268,25 @@
   <!-- 跑馬燈 -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.Marquee/1.3.94/jquery.marquee.min.js"></script>
   <!-- 瀑布流 -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.min.js"></script>
-  <script type="text/javascript" src="https://npmcdn.com/isotope-masonry-horizontal@2.0.0/masonry-horizontal.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/freewall/1.0.5/freewall.min.js"></script>
+
+
+<!--   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.1/isotope.pkgd.min.js"></script>
+  <script type="text/javascript" src="https://npmcdn.com/isotope-masonry-horizontal@2.0.0/masonry-horizontal.js"></script> -->
+
   <script type="text/javascript">
+  $(window).on('load', function() {
+       $('.loading').delay(1000).fadeOut('200', function() {
+         $(this).remove();
+       });
+   });
     $(function() {
 
 
       var _body = $('body,html');
       // 滾動
+
+
 
        var xx = 0;
       $('body').on('mousewheel', function(e) {
@@ -243,54 +323,75 @@
 
         // 瀑布流
 
-        var $grid = $('.grid').imagesLoaded( function() {
-          // init Isotope after all images have loaded
-          $grid.isotope({
-                  layoutMode: 'masonryHorizontal',
-                  itemSelector: '.item',
-                  masonryHorizontal: {
-                    rowHeight: 197,
-                  },
-                 // filter items with odd numbers
-                  filter: function() {
-                    var number = $( this ).attr('item_id');
-                    return parseInt( number, 10 ) ;
-                  },
-                  // sort by number
-                  sortBy: 'number',
-                  getSortData: {
-                    'number': '.number parseInt'
-                  }
-                });
-        });
+$(".free-wall .brick").each(function(index, item) {
+        item.style.backgroundImage =  "url(i/photo/" + (++index) + ".jpg)";
+      });
 
-        // var str='<div class="item item-height2"><img src="https://c3.staticflickr.com/1/361/19761217962_a3570fe583_c.jpg" /></div>';
-        var isOpen = false;
-        $('.grid').on('click','.item',function(){
-          var n = parseInt($(this).attr('item_id'))+1;
-          console.log(isOpen);
-          console.log(n-1);
-
-          if (isOpen) {
-            var remove_item = $('.item-open') ;
-            $grid.isotope( 'remove', remove_item );
-          } else {
-            var str='<div class="item item-open" item_id="'+n+'"><span class="number">'+n+'</span><h2>標題標題</h2><p>內文內文內文</p></div>';
-            console.log(str);
-            // var $items = getItemElement().add( getItemElement() ).add( getItemElement() );
-            // // insert new elements
-           // create new item elements
-            var $items = $(str);
-            // insert new elements
-            $grid.isotope( 'insert', $items );
+      $(function() {
+        var wall = new Freewall("#freewall");
+        wall.reset({
+          selector: '.brick',
+          cellW: 190,
+          cellH: 190,
+          gutterY: 2,
+          gutterX: 2,
+          onResize: function() {
+            wall.fitHeight($(window).height() - 125);
           }
-          // trigger layout
-          $grid.isotope('layout');
-          // set flag
-          isOpen = !isOpen;
-
-
         });
+        // caculator height for IE7;
+        wall.fitHeight($(window).height() - 125);
+        $(window).trigger("resize");
+      });
+
+        // var $grid = $('.grid').imagesLoaded( function() {
+        //   // init Isotope after all images have loaded
+        //   $grid.isotope({
+        //           layoutMode: 'masonryHorizontal',
+        //           itemSelector: '.item',
+        //           masonryHorizontal: {
+        //             rowHeight: 197,
+        //           },
+        //          // filter items with odd numbers
+        //           filter: function() {
+        //             var number = $( this ).attr('item_id');
+        //             return parseInt( number, 10 ) ;
+        //           },
+        //           // sort by number
+        //           sortBy: 'number',
+        //           getSortData: {
+        //             'number': '.number parseInt'
+        //           }
+        //         });
+        // });
+
+        // // var str='<div class="item item-height2"><img src="https://c3.staticflickr.com/1/361/19761217962_a3570fe583_c.jpg" /></div>';
+        // var isOpen = false;
+        // $('.grid').on('click','.item',function(){
+        //   var n = parseInt($(this).attr('item_id'))+1;
+        //   console.log(isOpen);
+        //   console.log(n-1);
+
+        //   if (isOpen) {
+        //     var remove_item = $('.item-open') ;
+        //     $grid.isotope( 'remove', remove_item );
+        //   } else {
+        //     var str='<div class="item item-open" item_id="'+n+'"><span class="number">'+n+'</span><h2>標題標題</h2><p>內文內文內文</p></div>';
+        //     console.log(str);
+        //     // var $items = getItemElement().add( getItemElement() ).add( getItemElement() );
+        //     // // insert new elements
+        //    // create new item elements
+        //     var $items = $(str);
+        //     // insert new elements
+        //     $grid.isotope( 'insert', $items );
+        //   }
+        //   // trigger layout
+        //   $grid.isotope('layout');
+        //   // set flag
+        //   isOpen = !isOpen;
+
+
+        //});
     });
   </script>
   </body>
