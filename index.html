@@ -275,28 +275,36 @@
   <script type="text/javascript" src="https://npmcdn.com/isotope-masonry-horizontal@2.0.0/masonry-horizontal.js"></script> -->
 
   <script type="text/javascript">
-  $(window).on('load', function() {
-       $('.loading').delay(1000).fadeOut('200', function() {
-         $(this).remove();
-       });
-   });
+    // loading
+    $(window).on('load', function() {
+         $('.loading').delay(1000).fadeOut('200', function() {
+           $(this).remove();
+         });
+     });
     $(function() {
 
 
       var _body = $('body,html');
       // 滾動
 
+    // transform: translate3d(-26px, 0px, 0px);
+    // transform-style: preserve-3d;
 
-
-       var xx = 0;
+       var view_x = 0;
       $('body').on('mousewheel', function(e) {
-        xx = xx + (e.deltaY*-100);
+        view_x = view_x + (e.deltaY*-2);
         console.log(e.deltaY);
-        console.log(xx);
-        // _window.scrollLeft(10);
-        // if(e.deltaY==1){
-        //   xx =
-        // }
+        console.log(view_x);
+        if(view_x >= 0 && view_x <= 50){
+          $('.warpper').css({
+            'transform': 'translateX('+ -view_x +'%)',
+          });
+        }else if(view_x > 50){
+          view_x = 50;
+        }else if(view_x < 0){
+          view_x = 0;
+        }
+
       });
 
       // 視差
