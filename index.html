@@ -84,28 +84,38 @@
       <!-- 瀑布流 -->
       <div class="freewall">
         <div class="freewall-wrapper">
-          <div id="freewall" class="grid">
+          <div class="freewallbox1 grid"></div>
+        <!--   <div id="freewall" class="grid">
+
             <div class="brick size1"></div>
             <div class="brick size2"></div>
             <div class="brick size3"></div>
-            <div class="brick size2"></div>
+            <div class="brick size1"></div>
             <div class="brick size1"></div>
             <div class="brick size4"></div>
-            <div class="brick size2"></div>
+            <div class="brick size1"></div>
+
             <div class="brick size1"></div>
             <div class="brick size1"></div>
             <div class="brick size3"></div>
             <div class="brick size2"></div>
+
+            <div class="brick size1"></div>
+            <div class="brick size1"></div>
+            <div class="brick size1"></div>
+
             <div class="brick size4"></div>
-            <div class="brick size1"></div>
-            <div class="brick size1"></div>
             <div class="brick size3"></div>
+
+            <div class="brick size1"></div>
+            <div class="brick size1"></div>
+            <div class="brick size1"></div>
+
             <div class="brick size2"></div>
-            <div class="brick size1"></div>
             <div class="brick size3"></div>
             <div class="brick size1"></div>
             <div class="brick size1"></div>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -265,9 +275,9 @@
        var freewall_x = 0;
        var onright = false;
       $('body').on('mousewheel', function(e) {
-        console.log(onright);
+        // console.log(onright);
         if(!onright){
-          console.log('1.'+view_x);
+          // console.log('1.'+view_x);
           view_x = view_x + (e.deltaY*-2);
           if(view_x >= 0 && view_x <= 50){
             $('.warpper').css({
@@ -280,7 +290,7 @@
             onright = true;
           }
         }else{
-          console.log('2.'+freewall_x);
+          // console.log('2.'+freewall_x);
           freewall_x = freewall_x + (e.deltaY*-2);
           if(freewall_x >= 0){
             $('.freewall-wrapper').css({
@@ -318,13 +328,103 @@
         });
 
         // 瀑布流
+        // var box_size = [{
+        //   'num20':['size1','size2','size3','size1','size1','size4','size1','size1','size1','size3','size2','size1','size1','size1','size4','size3','size3','size2','size1','size1']},{
+        //   'num16':['size1','size2','size3','size1','size1','size4','size1','size1','size1','size3','size2','size1','size1','size1','size4','size3']},{,{
+        //   'num14':['size1','size2','size3','size1','size1','size4','size1','size1','size1','size3','size2','size1','size1','size1']},{,{
+        //   'num11':['size1','size2','size3','size1','size1','size4','size1','size1','size1','size3','size2']},{
+        //   'num7':['size1','size2','size3','size1','size1','size4','size1']},{
+        //   'num4':['size1','size1','size3','size2']},{
+        //   'num3':['size1','size1','size1']},{
+        //   'num2':['size4','size3']}];
+        var box_size = ['size1','size2','size3','size1','size1','size4','size1','size1','size1','size3','size2','size1','size1','size1','size4','size3','size3','size2','size1','size1'];
+        var webdata = [{
+          'class':'picbox',
+          'pic_url':'https://c3.staticflickr.com/6/5542/30469055266_4b399c48ff_c.jpg',
+          'title':'標題',
+          'content':'內文'
 
-      $(".freewall .brick").each(function(index, item) {
-        item.style.backgroundImage =  "url(i/photo/" + (++index) + ".jpg)";
+        },{
+          'class':'link',
+          'pic_url':'https://c2.staticflickr.com/9/8645/30419102961_a20a92a178_c.jpg',
+          'a_href':'https://flic.kr/p/Nm2Rwr',
+        },{
+          'class':'picbox',
+          'pic_url':'https://c3.staticflickr.com/6/5546/30469056226_f249b5c605_c.jpg',
+          'title':'標題',
+          'content':'內文'
+        },{
+          'class':'link',
+          'pic_url':'https://c3.staticflickr.com/6/5545/29875141434_6f7d3e1c68_c.jpg',
+          'a_href':'https://flic.kr/p/MvXUHq',
+        },{
+          'class':'picbox',
+          'pic_url':'https://c3.staticflickr.com/6/5746/30469057426_f56bd4fd7f_c.jpg',
+          'title':'標題',
+          'content':'內文'
+        },{
+          'class':'picbox',
+          'pic_url':'https://c5.staticflickr.com/9/8594/30469058396_5d0d9fa5af_c.jpg',
+          'title':'標題',
+          'content':'內文'
+        },{
+          'class':'link',
+          'pic_url':'https://c8.staticflickr.com/6/5759/30419104271_e366ec91d9_c.jpg',
+          'a_href':'https://flic.kr/p/Nm2RV2',
+        },{
+          'class':'link',
+          'pic_url':'https://c8.staticflickr.com/6/5509/29873483503_65dfc78961_c.jpg',
+          'a_href':'https://flic.kr/p/MvPpSp',
+        },{
+          'class':'picbox',
+          'pic_url':'https://c3.staticflickr.com/6/5772/30469059506_383752a129_c.jpg',
+          'title':'標題',
+          'content':'內文'
+        },{
+          'class':'link',
+          'pic_url':'https://c6.staticflickr.com/6/5737/30419105141_07fb91bd30_c.jpg',
+          'a_href':'https://flic.kr/p/Nm2Sb2',
+        },{
+          'class':'picbox',
+          'pic_url':'https://c5.staticflickr.com/6/5341/30207289940_71b5ae2597_h.jpg',
+          'title':'標題',
+          'content':'內文'
+        }];
+      var data_n = 0;
+      var n = webdata.length;
+      var freewallbox1 = $('.freewallbox1');
+      console.log(n);
+      $.each(box_size,function(i,item){
+
+        if(n<20){
+          if(data_n == n){
+            data_n = 0;
+          }
+          console.log(i+';'+data_n);
+          if(webdata[data_n].class == 'picbox'){
+            freewallbox1.append('<div class="brick '+item+'" style="background-image:url('+webdata[data_n].pic_url+');"></div>');
+          }else if(webdata[data_n].class == 'link'){
+            freewallbox1.append('<a class="brick '+item+'" href="'+webdata[data_n].a_href+'" style="background-image:url('+webdata[data_n].pic_url+');" target="_blank"></a>');
+          }
+
+          data_n++;
+        }else{
+
+        }
       });
+      // $.each(webdata, function(i, item){
 
-      $(function() {
-        var wall = new Freewall("#freewall");
+      //    var n = webdata.length;
+      //     console.log(n);
+
+      //    $('.freewallbox1').append('<div class="brick size1" style="background-image:url('+item.pic_url+');"></div>');
+      // });
+
+      // $("#freewall .brick").each(function(index, item) {
+      //   item.style.backgroundImage =  "url(i/photo/" + (++index) + ".jpg)";
+      // });
+
+        var wall = new Freewall(".freewallbox1");
         wall.reset({
           selector: '.brick',
           cellW: 190,
@@ -338,7 +438,7 @@
         // caculator height for IE7;
         wall.fitHeight($(window).height() - 140);
         $(window).trigger("resize");
-      });
+
 
         // var $grid = $('.grid').imagesLoaded( function() {
         //   // init Isotope after all images have loaded
