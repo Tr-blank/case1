@@ -85,38 +85,8 @@
       <div class="freewall">
         <div class="freewall-wrapper">
           <div class="freewallbox1 grid"></div>
-        <!--   <div id="freewall" class="grid">
-
-            <div class="brick size1"></div>
-            <div class="brick size2"></div>
-            <div class="brick size3"></div>
-            <div class="brick size1"></div>
-            <div class="brick size1"></div>
-            <div class="brick size4"></div>
-            <div class="brick size1"></div>
-
-            <div class="brick size1"></div>
-            <div class="brick size1"></div>
-            <div class="brick size3"></div>
-            <div class="brick size2"></div>
-
-            <div class="brick size1"></div>
-            <div class="brick size1"></div>
-            <div class="brick size1"></div>
-
-            <div class="brick size4"></div>
-            <div class="brick size3"></div>
-
-            <div class="brick size1"></div>
-            <div class="brick size1"></div>
-            <div class="brick size1"></div>
-
-            <div class="brick size2"></div>
-            <div class="brick size3"></div>
-            <div class="brick size1"></div>
-            <div class="brick size1"></div>
-          </div> -->
-        </div>
+          <div class="freewallbox2 grid"></div>
+         </div>
       </div>
 
 <!--       <main id="freewall" class="grid">
@@ -393,6 +363,7 @@
       var data_n = 0;
       var n = webdata.length;
       var freewallbox1 = $('.freewallbox1');
+      var freewallbox2 = $('.freewallbox2');
       console.log(n);
       $.each(box_size,function(i,item){
 
@@ -402,9 +373,9 @@
           }
           console.log(i+';'+data_n);
           if(webdata[data_n].class == 'picbox'){
-            freewallbox1.append('<div class="brick '+item+'" style="background-image:url('+webdata[data_n].pic_url+');"></div>');
+            freewallbox1.append('<div class="brick '+item+'"><span class="pic" style="background-image:url('+webdata[data_n].pic_url+');"></span></div>');
           }else if(webdata[data_n].class == 'link'){
-            freewallbox1.append('<a class="brick '+item+'" href="'+webdata[data_n].a_href+'" style="background-image:url('+webdata[data_n].pic_url+');" target="_blank"></a>');
+            freewallbox1.append('<a class="brick '+item+'" href="'+webdata[data_n].a_href+'" target="_blank"><span class="pic" style="background-image:url('+webdata[data_n].pic_url+');"></span></a>');
           }
 
           data_n++;
