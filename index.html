@@ -38,6 +38,44 @@
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
   <![endif]-->
 
+<!--     <style type="text/css">
+
+      @keyframes start {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+
+      @-webkit-keyframes start {
+        from {
+          -webkit-transform: scale(0);
+        }
+        to {
+          -webkit-transform: scale(1);
+        }
+      }
+
+      .free-wall .cell[data-state="init"] {
+        display: none;
+      }
+
+      .free-wall .cell[data-state="start"]  {
+        display: block;
+        animation: start 0.5s;
+        -webkit-animation: start 0.5s;
+      }
+
+      .free-wall .cell[data-state="move"]  {
+        transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s;
+        -webkit-transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s;
+      }
+
+    </style> -->
+
   </head>
   <body>
   <!-- loading -->
@@ -74,11 +112,12 @@
     <div class="rightbox">
       <!-- 左右跑馬燈 -->
       <div class="news">
-        <div class="title">最新消息</div>
+        <div class="title">NEWS</div>
         <div class="marquee">
-          <a href="">測試畫面111測試畫面111測試畫面111測試畫面111測試畫面111</a>
-          <a href="">測試畫面22222測試畫面22222測試畫面22222測試畫面22222測試畫面22222測試畫面22222</a>
-          <a href="">測試畫面33333測試畫面33333測試畫面33333測試畫面33333測試畫面33333測試畫面33333</a>
+          <a href=""><span>跑馬燈及footer轉場動畫</span></a>
+          <a href=""><span>json陣列資料結合瀑布流</span></a>
+          <a href=""><span>loading效果及滑鼠滾輪綁定左右捲動</span></a>
+          <a href=""><span>主要橫向瀑布流版型建置及上下方定點及跑馬燈效果</span></a>
         </div>
       </div>
       <!-- 瀑布流 -->
@@ -244,15 +283,19 @@
        var view_x = 0;
        var freewall_x = 0;
        var onright = false;
+       var topanddown = $('.rightbox,footer');
       $('body').on('mousewheel', function(e) {
         // console.log(onright);
         if(!onright){
-          // console.log('1.'+view_x);
+          console.log('1.'+view_x);
           view_x = view_x + (e.deltaY*-2);
           if(view_x >= 0 && view_x <= 50){
+            // 上下進入
+            topanddown.removeClass('show');
             $('.warpper').css({
               'transform': 'translateX('+ -view_x +'%)',
             });
+
           }else if(view_x < 0){
             view_x = 0;
           }else if(view_x > 50){
@@ -260,6 +303,8 @@
             onright = true;
           }
         }else{
+          // 上下退出
+          topanddown.addClass('show');
           // console.log('2.'+freewall_x);
           freewall_x = freewall_x + (e.deltaY*-2);
           if(freewall_x >= 0){
@@ -406,6 +451,7 @@
             wall.fitHeight($(window).height() - 140);
           }
         });
+
         // caculator height for IE7;
         wall.fitHeight($(window).height() - 140);
         $(window).trigger("resize");
