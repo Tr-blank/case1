@@ -26,6 +26,8 @@
   <meta property="og:site_name" content="Site Name, i.e. Moz" />
   <meta property="article:tag" content="Article Tag" />
 
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
   <link rel="stylesheet" href="css/index.min.css">
 
 <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
@@ -86,58 +88,60 @@
         </path>
   </svg>
   </div>
-  <div class="warpper">
-    <div class="header">
-      <header>
-        <div class="title">
-          <h1>法國巴黎</h1>
-          <h2>2016/10/05~2016/10/12</h2>
+  <div class="view">
+    <div class="warpper">
+      <div class="header">
+        <header>
+          <div class="title">
+            <h1>法國巴黎</h1>
+            <h2>2016/10/05~2016/10/12</h2>
+          </div>
+        </header>
+        <div id="scene">
+          <div class="layer" data-depth="0.20">
+             <picture>
+               <!--[if IE 9]><video style="display: none;"><![endif] -->
+                <source media="(max-width: 480px)" srcset="https://c5.staticflickr.com/6/5341/30207289940_e04d118701.jpg" >
+                <source media="(max-width: 720px)" srcset="https://c5.staticflickr.com/6/5341/30207289940_e04d118701_c.jpg" >
+                <source media="(max-width: 1024px)" srcset="https://c5.staticflickr.com/6/5341/30207289940_e04d118701_b.jpg">
+                <source media="(min-width: 1024px)" srcset="https://c5.staticflickr.com/6/5341/30207289940_71b5ae2597_h.jpg">
+                <!--[if IE 9]><video style="display: none;"><![endif]-->
+                <img src="https://c5.staticflickr.com/6/5341/30207289940_e04d118701_b.jpg">
+            </picture>
+          </div>
         </div>
-      </header>
-      <div id="scene">
-        <div class="layer" data-depth="0.20">
-           <picture>
-             <!--[if IE 9]><video style="display: none;"><![endif] -->
-              <source media="(max-width: 480px)" srcset="https://c5.staticflickr.com/6/5341/30207289940_e04d118701.jpg" >
-              <source media="(max-width: 720px)" srcset="https://c5.staticflickr.com/6/5341/30207289940_e04d118701_c.jpg" >
-              <source media="(max-width: 1024px)" srcset="https://c5.staticflickr.com/6/5341/30207289940_e04d118701_b.jpg">
-              <source media="(min-width: 1024px)" srcset="https://c5.staticflickr.com/6/5341/30207289940_71b5ae2597_h.jpg">
-              <!--[if IE 9]><video style="display: none;"><![endif]-->
-              <img src="https://c5.staticflickr.com/6/5341/30207289940_e04d118701_b.jpg">
-          </picture>
+        <div class="header-right"><span>往左拖曳 ></span></div>
+      </div>
+      <div class="rightbox">
+        <!-- 左右跑馬燈 -->
+        <div class="news">
+          <div class="title">NEWS</div>
+          <div class="marquee">
+            <a href=""><span>跑馬燈及footer轉場動畫</span></a>
+            <a href=""><span>json陣列資料結合瀑布流</span></a>
+            <a href=""><span>loading效果及滑鼠滾輪綁定左右捲動</span></a>
+            <a href=""><span>主要橫向瀑布流版型建置及上下方定點及跑馬燈效果</span></a>
+          </div>
         </div>
-      </div>
-      <div class="header-right"><span>往左拖曳 ></span></div>
-    </div>
-    <div class="rightbox">
-      <!-- 左右跑馬燈 -->
-      <div class="news">
-        <div class="title">NEWS</div>
-        <div class="marquee">
-          <a href=""><span>跑馬燈及footer轉場動畫</span></a>
-          <a href=""><span>json陣列資料結合瀑布流</span></a>
-          <a href=""><span>loading效果及滑鼠滾輪綁定左右捲動</span></a>
-          <a href=""><span>主要橫向瀑布流版型建置及上下方定點及跑馬燈效果</span></a>
+        <!-- 瀑布流 -->
+        <div class="freewall">
+          <div class="freewall-wrapper">
+            <div class="freewallbox1 grid"></div>
+            <div class="freewallbox2 grid"></div>
+           </div>
         </div>
+        <footer>
+          footer
+        </footer>
       </div>
-      <!-- 瀑布流 -->
-      <div class="freewall">
-        <div class="freewall-wrapper">
-          <div class="freewallbox1 grid"></div>
-          <div class="freewallbox2 grid"></div>
-         </div>
-      </div>
-      <footer>
-        footer
-      </footer>
-    </div>
 
+    </div>
   </div>
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- 滾輪事件 -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
   <!-- 視差效果 -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/parallax/2.1.3/jquery.parallax.min.js"></script>
